@@ -44,28 +44,34 @@ export const EditSidebar = (props) => {
   };
 
   return (
-    <>
-      Event Name:
-      <div>{props.eventData && props.eventData.event}</div>
-      Description:
-      <div>{props.eventData && props.eventData.description}</div>
-      Select Tags:
-      <Form onSubmit={onSave}>
-        {props.allTags.map((tag) => {
-          return (
-            <FormGroup key={tag.id} check>
-              <Input
-                type="checkbox"
-                checked={checkboxStates[tag.id]}
-                onChange={() => toggleCheckbox(tag.id)}
-              />
-              <Label check>{tag.name}</Label>
-            </FormGroup>
-          );
-        })}
-        <Button type="submit">Save</Button>
-        <Button onClick={props.onCancel}>Cancel</Button>
-      </Form>
-    </>
+    <div className="p-3">
+      <div>
+        <div>Event Name:</div>
+        <div>{props.eventData && props.eventData.event}</div>
+      </div>
+      <div className="mt-3">
+        <div>Description:</div>
+        <div>{props.eventData && props.eventData.description}</div>
+      </div>
+      <div className="mt-3">
+        <div>Select Tags:</div>
+        <Form onSubmit={onSave}>
+          {props.allTags.map((tag) => {
+            return (
+              <FormGroup key={tag.id} check>
+                <Input
+                  type="checkbox"
+                  checked={checkboxStates[tag.id]}
+                  onChange={() => toggleCheckbox(tag.id)}
+                />
+                <Label check>{tag.name}</Label>
+              </FormGroup>
+            );
+          })}
+          <Button type="submit">Save</Button>
+          <Button onClick={props.onCancel}>Cancel</Button>
+        </Form>
+      </div>
+    </div>
   );
 };
